@@ -1,0 +1,21 @@
+{
+  "name": "backend_node",
+  "version": "0.1.0",
+  "description": "Un Chat como telegram pero mucho mejor",
+  "main": "server.js",
+  "author": "Sergio Perez",
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "standard": "^17.0.0"
+  },
+  "scripts": {
+    "start": "node --watch server.js"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  }
+}
