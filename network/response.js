@@ -5,7 +5,7 @@ export const success = (req, res, message, status) => {
   })
 }
 
-export const error = (req, res, error, status) => {
+export const errorMessage = (req, res, error, status) => {
   res.status(status || 500).send({
     error,
     body: ''

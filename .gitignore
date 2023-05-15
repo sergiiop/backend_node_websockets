@@ -1,3 +1,6 @@
 # Generate a gitignore file
 
 node_modules/
+
+mongo_data
+mongo_data_e2e
