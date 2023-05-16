@@ -1,15 +1,13 @@
-import mongoose from 'mongoose'
-
-mongoose.connect('mongodb://localhost:27017/telegrom', {
-  useNewUrlParser: true
-})
-
-console.log('[db] conectada con exito')
+import { Message } from './model.js'
 
 export const addMessage = (message) => {
   // list.push(message)
+  const myMessage = new Message(message)
+  myMessage.save()
 }
 
-export const getMessages = () => {
+export const getMessages = async () => {
   // return list
+  const messages = await Message.find()
+  return messages
 }
