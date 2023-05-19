@@ -1,21 +1,21 @@
-import express, { json } from 'express'
+import express from 'express'
 import router from './network/routes.js'
 import mongoose from 'mongoose'
 import dbConnection from './database/config.js'
 
 const app = express()
 
-dbConnection()
-
-app.use(json())
+app.use(express.json())
+app.use('/app', express.static('public'))
 
 router(app)
+
 // app.use('/', (req, res) => {
 //   res.send('Hello World!')
 // })
+console.log('here')
 
-app.use('/app', express.static('public'))
-
+dbConnection()
 mongoose.connection.on('open', () => {
   console.log('Mongoose: Connected')
   app.listen(3000, () => {
