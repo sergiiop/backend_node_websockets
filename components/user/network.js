@@ -1,19 +1,19 @@
 import { Router } from 'express'
 import { success, errorMessage } from '../../network/response.js'
-import { addMessage, getMessages, updateMessage, deleteMessage } from './controller.js'
+import { addUser, deleteUser, getUsers, updateUser } from './controller.js'
 
 const router = Router()
 
 router.get('/', async (req, res) => {
-  const filterMessages = req.query.user || null
-  const messageList = await getMessages(filterMessages)
+  const filterMessages = req.query.name || null
+  const messageList = await getUsers(filterMessages)
   success(req, res, messageList, 200)
 })
 
 router.post('/', async (req, res) => {
   try {
-    const { user, message } = req.body
-    const fullMessage = await addMessage(user, message)
+    const { name } = req.body
+    const fullMessage = await addUser(name)
     success(req, res, fullMessage, 201)
   } catch (error) {
     console.error(error)
@@ -23,12 +23,12 @@ router.post('/', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
   const { id } = req.params
-  const { message } = req.body
+  const { name } = req.body
 
   try {
-    const messageUpdated = await updateMessage(id, message)
+    const userUpdated = await updateUser(id, name)
 
-    success(req, res, messageUpdated, 200)
+    success(req, res, userUpdated, 200)
   } catch (error) {
     console.error(error)
     errorMessage(req, res, 'Error interno', 500, 'Error en el controlador')
@@ -39,9 +39,9 @@ router.delete('/:id', async (req, res) => {
   const { id } = req.params
 
   try {
-    const messageDeleted = await deleteMessage(id)
+    const userDeleted = await deleteUser(id)
 
-    success(req, res, messageDeleted, 200)
+    success(req, res, userDeleted, 200)
   } catch (error) {
     console.error(error)
     errorMessage(req, res, 'Error interno', 500, 'Error en el controlador')

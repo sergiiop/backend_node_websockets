@@ -1,7 +1,10 @@
 import { Schema, model } from 'mongoose'
 
 const messageSchema = new Schema({
-  user: String,
+  user: {
+    type: Schema.ObjectId,
+    ref: 'User'
+  },
   message: {
     type: String,
     required: true

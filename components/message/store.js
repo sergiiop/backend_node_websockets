@@ -24,3 +24,10 @@ export const updateMessage = async (id, message) => {
 
   return newMessage
 }
+
+export const deleteMessage = async (id) => {
+  await Message.findByIdAndDelete(id)
+  return {
+    message: `Mensaje con id ${id} eliminado`
+  }
+}
