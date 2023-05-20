@@ -4,4 +4,4 @@ const userSchema = new Schema({
   name: String
 })
 
-export const User = model('Message', userSchema)
+export const User = model('User', userSchema)

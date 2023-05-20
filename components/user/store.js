@@ -10,8 +10,6 @@ export const getUsers = async (filterUsers) => {
   if (filterUsers !== null) {
     filter = { name: filterUsers }
   }
-  console.log('🚀 ~ file: store.js:12 ~ getMessages ~ filter:', filter)
-
   const users = await User.find(filter)
   return users
 }

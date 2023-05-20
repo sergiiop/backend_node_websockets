@@ -10,9 +10,7 @@ export const getMessages = async (filterUser) => {
   if (filterUser !== null) {
     filter = { user: filterUser }
   }
-  console.log('🚀 ~ file: store.js:12 ~ getMessages ~ filter:', filter)
-
-  const messages = await Message.find(filter)
+  const messages = await Message.find(filter).populate('user')
   return messages
 }
 

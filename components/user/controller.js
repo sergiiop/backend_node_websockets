@@ -1,4 +1,4 @@
-import { adduser as add, getUsers as list, updateUser as update, deleteUser as remove } from './store.js'
+import { addUser as add, getUsers as list, updateUser as update, deleteUser as remove } from './store.js'
 
 export const addUser = async (name) => {
   try {
